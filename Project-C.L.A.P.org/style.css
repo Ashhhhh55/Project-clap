@@ -1,0 +1,638 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+header {
+    background: #003366;
+    color: white;
+    text-align: center;
+    padding: 32px;
+    position: relative;
+}
+
+.university-logo {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100px; /* Increased from 80px to 100px */
+    width: auto;
+}
+
+header h1 {
+    font-size: 56px;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+}
+
+.container {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+.project-info {
+    background: white;
+    border-radius: 10px;
+    padding: 32px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.components {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.component-card {
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+h2, h3 {
+    color: #003366;
+    margin-bottom: 16px;
+}
+
+ul {
+    list-style-position: inside;
+    margin-left: 16px;
+}
+
+.highlight {
+    background: #e6f3ff;
+    padding: 16px;
+    border-left: 4px solid #003366;
+    margin: 16px 0;
+}
+
+.language-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    z-index: 1000;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+
+.language-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+[lang="ar"] {
+    direction: rtl;
+    display: none;
+}
+
+.active-lang {
+    display: block !important;
+}
+
+.inactive-lang {
+    display: none !important;
+}
+
+.code-block {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 24px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Consolas', monospace;
+    margin: 16px 0;
+    display: none;
+}
+
+.code-comment {
+    color: #6a9955;
+}
+
+.code-btn {
+    background: #003366;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+}
+
+.code-btn:hover {
+    background: #004c99;
+}
+
+.copy-btn {
+    background: #2ecc71;
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    float: right;
+    transition: background 0.3s;
+}
+
+.copy-btn:hover {
+    background: #27ae60;
+}
+
+.show {
+    display: block !important;
+}
+
+/* Code highlighting */
+.keyword { color: #569cd6; }
+.comment { color: #6a9955; }
+.number { color: #b5cea8; }
+.string { color: #ce9178; }
+.function { color: #dcdcaa; }
+.variable { color: #9cdcfe; }
+.constant { color: #4fc1ff; }
+
+.team-members {
+    background: #f9f9f9;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.member-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: #003366;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.member-header span:nth-child(1) {
+    margin-left: 40px;
+}
+
+.member-header span:nth-child(2) {
+    margin-left: 320px;
+}
+
+.member-header span:nth-child(3) {
+    margin-right: 100px;
+}
+
+.team-members li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    align-items: center;
+}
+
+.team-members li span.name {
+    flex: 2;
+    position: relative;
+}
+
+.team-members li span.name::before {
+    content: '•';
+    position: absolute;
+    left: -20px;
+    color: #333;
+}
+
+.team-members li span.id,
+.team-members li span.group {
+    flex: 1;
+    text-align: center;
+}
+
+.team-members-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.team-members-container li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.team-members-container .name {
+    flex: 1;
+    text-align: center;
+}
+
+.team-members-container .id,
+.team-members-container .group {
+    flex: 1;
+    text-align: center;
+}
+
+.lang-en, .lang-ar {
+    display: none;
+}
+
+.lang-visible {
+    display: block;
+}
+
+.rtl-text {
+    direction: rtl;
+    text-align: right;
+}
+
+footer {
+    background: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.content {
+    padding-bottom: 80px;
+}
+
+footer p {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.contact-btn {
+    padding: 10px 20px;
+    background: #4ECDC4;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.contact-btn:hover {
+    background: #3bb3a1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* Contact Panel Styles */
+.contact-panel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1001;
+    width: 80%;
+    max-width: 600px;
+}
+
+.contact-panel.show {
+    display: block;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+.contact-panel p {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.contact-panel .phone-number {
+    font-weight: bold;
+    color: #003366;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.maintenance-text {
+    font-style: italic;
+    color: #ff6b6b;
+    text-align: center;
+    margin: 16px 0;
+}
+
+.references-section {
+    background: white;
+    border-radius: 10px;
+    padding: 32px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.references-content.highlight {
+    background: #e6f3ff; /* Light blue background */
+    padding: 16px;
+    border-left: 4px solid #003366; /* Consistent with .highlight */
+    margin: 16px 0;
+    border-radius: 10px;
+}
+
+.references-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.references-content li {
+    margin-bottom: 10px;
+}
+
+.references-content a {
+    color: #003366;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+    display: inline-block;
+}
+
+.references-content a:hover {
+    color: #ff6b6b; /* New hover text color */
+    transform: translateX(5px);
+}
+
+.code-btn:hover, .copy-btn:hover, .contact-btn:hover {
+    background: #00509e; /* New hover color for buttons */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.references-content .lang-ar {
+    font-style: italic; /* Make Arabic text in references italic */
+}
+
+/* Add media queries for responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .language-btn, .contact-btn {
+        font-size: 14px; /* Adjust button text size */
+        padding: 8px 16px; /* Adjust button padding */
+    }
+    header h1 {
+        font-size: 36px; /* Adjust header font size */
+    }
+    .project-info, .references-section {
+        padding: 20px; /* Adjust padding for sections */
+    }
+    .component-card {
+        margin-bottom: 20px; /* Add spacing between components */
+    }
+    .team-members .member-header, .team-members ul {
+        display: block; /* Stack team member info vertically */
+    }
+    .gallery img {
+        width: 100%; /* Make images responsive */
+        height: auto;
+    }
+    footer {
+        padding: 15px; /* Adjust footer padding */
+    }
+    header {
+        position: fixed; /* Fix the header at the top */
+        top: 0; /* Align to the top of the viewport */
+        left: 0;
+        width: 100%; /* Full width */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-color: #003366;
+        color: white;
+        box-sizing: border-box;
+        z-index: 1000; /* Ensure it stays above other content */
+    }
+    header h1 {
+        font-size: 28px;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .language-btn {
+        order: -1; /* Move the button before the title */
+        margin-bottom: 10px; /* Add margin for spacing */
+    }
+
+    footer {
+        position: fixed; /* Fix the footer at the bottom */
+        bottom: 0; /* Align to the bottom of the viewport */
+        left: 0;
+        width: 100%; /* Full width */
+        padding: 20px;
+        background: #003366;
+        color: white;
+        text-align: center;
+        box-sizing: border-box;
+        z-index: 1000; /* Ensure it stays above other content */
+    }
+
+    footer p {
+        margin: 5px 0;
+    }
+
+    /* Adjust body padding to prevent content overlap */
+    body {
+        padding-top: 120px; /* Adjust based on header height */
+        padding-bottom: 60px; /* Adjust based on footer height */
+    }
+
+    .member-header {
+        display: flex;
+        flex-direction: row; /* Align labels in a row */
+        justify-content: space-between; /* Distribute space evenly */ /* Center align vertically */
+        padding: 10px 20px;
+        background: #003366;
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+
+}
+
+/* Ensure buttons are touch-friendly */
+button {
+    cursor: pointer;
+    touch-action: manipulation;
+    padding: 10px 20px; /* Ensure sufficient padding */
+    font-size: 16px; /* Ensure readable font size */
+}
+
+/* Responsive text */
+body {
+    font-size: 14px; /* Base font size for readability */
+    line-height: 1.5;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    /* Example header styling */
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-color: #003366;
+        color: white;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    header h1 {
+        font-size: 28px;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    footer {
+        padding: 20px;
+        background: #003366;
+        color: white;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    footer p {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-color: #003366;
+        color: white;
+        box-sizing: border-box;
+        z-index: 1000;
+    }
+
+    .university-logo {
+        width: 140px; /* Adjusted size for better visibility */
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 10px;
+        top: 50px;
+        left: 5px;
+        /* Ensure the image is high resolution */
+        image-rendering: -webkit-optimize-contrast; /* For better image rendering */
+    }
+
+    header h1 {
+        font-size: 28px;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .language-btn {
+        position: absolute; /* Position the button absolutely */
+        top: 35px; /* Adjust top position as needed */
+        right: -120px; /* Adjust right position as needed */
+        padding: 10px 20px; /* Ensure sufficient padding */
+        background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s;
+        z-index: 1001; /* Ensure it stays above other content */
+    }
+
+    .language-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: #003366;
+        color: white;
+        text-align: center;
+        box-sizing: border-box;
+        z-index: 1000;
+    }
+
+    footer p {
+        margin: 5px 0;
+    }
+
+    body {
+        padding-top: 250px; /* Adjust based on header height */
+        padding-bottom: 60px; /* Adjust based on footer height */
+    }
+}
+
+@media (max-width: 768px) {
+    .member-header {
+        display: flex;
+        flex-wrap: nowrap; /* Prevent wrapping */
+    }
+    .member-header span:nth-child(1) {
+        margin-left: 40px;
+    }
+    .member-header span:nth-child(2){
+        margin-left: 75px;
+    }
+    .member-header span:nth-child(3) {
+        margin-left: 30px; /* Remove margin to prevent extra space */
+        margin-right: 0px; /* Remove margin to prevent extra space */
+    }
+}
